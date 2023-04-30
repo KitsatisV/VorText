@@ -3,7 +3,7 @@ using FirebaseAdminAuthentication.DependencyInjection.Extensions;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using VorTextConvos.API.Responses;
+using VorTextShared.Core.Responses;
 
 var builder = WebApplication.CreateBuilder(args);
 

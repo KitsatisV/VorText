@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VorText", "VorText\VorText.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorTextConvos.API", "VorTextConvos.API\VorTextConvos.API.csproj", "{431AF625-C37F-4A2A-A72C-840A518F46E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorTextShared.Core", "VorTextShared.Core\VorTextShared.Core.csproj", "{37F82348-58A4-4A25-AF02-0480321AAD05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{431AF625-C37F-4A2A-A72C-840A518F46E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{431AF625-C37F-4A2A-A72C-840A518F46E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{431AF625-C37F-4A2A-A72C-840A518F46E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F82348-58A4-4A25-AF02-0480321AAD05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F82348-58A4-4A25-AF02-0480321AAD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F82348-58A4-4A25-AF02-0480321AAD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F82348-58A4-4A25-AF02-0480321AAD05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

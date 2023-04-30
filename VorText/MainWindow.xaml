@@ -10,7 +10,7 @@
         Title="VorText"
         Height="450"
         Width="800">
-    <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type vms:RegisterViewModel}">
@@ -26,5 +26,5 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
-    </Grid>
+    </ScrollViewer>
 </Window>

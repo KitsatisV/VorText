@@ -26,5 +26,10 @@ namespace VorText.Stores
             //Performing the Log In
             _currentFirebaseAuthlink = await _firebaseAuthProvider.SignInWithEmailAndPasswordAsync(email, password);
         }
+
+        internal Task<FirebaseAuthLink> GetFreshAuthAsync()
+        {
+            return _currentFirebaseAuthlink.GetFreshAuthAsync();
+        }
     }
 }

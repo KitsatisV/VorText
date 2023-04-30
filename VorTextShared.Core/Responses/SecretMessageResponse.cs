@@ -1,4 +1,4 @@
-﻿namespace VorTextConvos.API.Responses
+﻿namespace VorTextShared.Core.Responses
 {
     public class SecretMessageResponse
     {
