@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using VorText.Stores;
 using VorText.ViewModels;
 
 namespace VorText
@@ -37,9 +38,11 @@ namespace VorText
                     //Navigation
                     service.AddSingleton<NavigationStore>();
                     service.AddSingleton<ModalNavigationStore>();
+                    service.AddSingleton<AuthenticationStore>();
 
                     service.AddSingleton<NavigationService<RegisterViewModel>>((services) => new NavigationService<RegisterViewModel>(services.GetRequiredService<NavigationStore>(), () => new RegisterViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
-                    service.AddSingleton<NavigationService<LoginViewModel>>((services) => new NavigationService<LoginViewModel>(services.GetRequiredService<NavigationStore>(), () => new LoginViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<RegisterViewModel>>())));
+                    service.AddSingleton<NavigationService<LoginViewModel>>((services) => new NavigationService<LoginViewModel>(services.GetRequiredService<NavigationStore>(), () => new LoginViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<NavigationService<RegisterViewModel>>(), services.GetRequiredService<NavigationService<HomeViewModel>>())));
+                    service.AddSingleton<NavigationService<HomeViewModel>>((services) => new NavigationService<HomeViewModel>(services.GetRequiredService<NavigationStore>(), () => new HomeViewModel(services.GetRequiredService<AuthenticationStore>())));
 
                     //Main window
                     service.AddSingleton<MainViewModel>();

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using VorText.Commands;
+using VorText.Stores;
 
 namespace VorText.ViewModels
 {
@@ -45,9 +46,9 @@ namespace VorText.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand NavigateRegisterCommand { get; }
 
-        public LoginViewModel(FirebaseAuthProvider firebaseAuthProvider, INavigationService registerNavigationService)
+        public LoginViewModel(AuthenticationStore authenticationStore, INavigationService registerNavigationService, INavigationService homeNavigationService)
         {
-            SubmitCommand = new LoginCommand(this, firebaseAuthProvider);
+            SubmitCommand = new LoginCommand(this, authenticationStore, homeNavigationService);
             NavigateRegisterCommand = new NavigateCommand(registerNavigationService);
         }
 
