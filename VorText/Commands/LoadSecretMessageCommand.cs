@@ -32,7 +32,7 @@ namespace VorText.Commands
             }
             catch (Exception)
             {
-                MessageBox.Show("Unable to load secret message!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Unable to load secret message! Please try again later.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

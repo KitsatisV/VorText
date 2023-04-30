@@ -14,22 +14,36 @@ namespace VorText.Stores
 
         private FirebaseAuthLink _currentFirebaseAuthlink;
 
+        //Constructor
         public AuthenticationStore(FirebaseAuthProvider firebaseAuthProvider)
         {
             _firebaseAuthProvider = firebaseAuthProvider;
         }
 
+        //Getting the current user
         public User? CurrentUser => _currentFirebaseAuthlink?.User;
 
+        //Methods
         public async Task Login(string email, string password)
         {
             //Performing the Log In
             _currentFirebaseAuthlink = await _firebaseAuthProvider.SignInWithEmailAndPasswordAsync(email, password);
         }
 
-        internal Task<FirebaseAuthLink> GetFreshAuthAsync()
+        public void Logout()
         {
-            return _currentFirebaseAuthlink.GetFreshAuthAsync();
+            _currentFirebaseAuthlink = null;
+        }
+
+        internal async Task<FirebaseAuthLink> GetFreshAuthAsync()
+        {
+            if (_currentFirebaseAuthlink == null)
+            {
+                return null;
+            }
+
+            //Refreshing token in case it's expired
+            return await _currentFirebaseAuthlink.GetFreshAuthAsync();
         }
     }
 }

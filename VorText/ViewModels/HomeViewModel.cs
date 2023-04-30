@@ -1,4 +1,5 @@
-﻿using MVVMEssentials.ViewModels;
+﻿using MVVMEssentials.Services;
+using MVVMEssentials.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,18 +32,23 @@ namespace VorText.ViewModels
         //Getting the Current User from the Authentication Store
         public string Username => _authenticationStore.CurrentUser?.DisplayName ?? "Unknown";
 
+        //Commands
         public ICommand LoadSecretMessageCommand { get; }
+        public ICommand LogoutCommand { get; }
 
-        public HomeViewModel(AuthenticationStore authenticationStore, IGetSecretMessageQuery getSecretMessageQuery)
+        //Constructor
+        public HomeViewModel(AuthenticationStore authenticationStore, IGetSecretMessageQuery getSecretMessageQuery, INavigationService loginNavigationService)
         {
             _authenticationStore = authenticationStore;
 
             LoadSecretMessageCommand = new LoadSecretMessageCommand(this, getSecretMessageQuery);
+            LogoutCommand = new LogoutCommand(authenticationStore, loginNavigationService);
         }
 
-        public static HomeViewModel LoadViewModel(AuthenticationStore authenticationStore, IGetSecretMessageQuery getSecretMessageQuery)
+        //Methods
+        public static HomeViewModel LoadViewModel(AuthenticationStore authenticationStore, IGetSecretMessageQuery getSecretMessageQuery, INavigationService loginNavigationService)
         {
-            HomeViewModel homeViewModel = new HomeViewModel(authenticationStore, getSecretMessageQuery);
+            HomeViewModel homeViewModel = new HomeViewModel(authenticationStore, getSecretMessageQuery, loginNavigationService);
 
             homeViewModel.LoadSecretMessageCommand.Execute(null);
 

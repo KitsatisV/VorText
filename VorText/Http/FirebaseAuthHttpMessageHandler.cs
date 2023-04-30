@@ -26,7 +26,10 @@ namespace VorText.Http
             FirebaseAuthLink firebaseAuthLink = await _authenticationStore.GetFreshAuthAsync();
 
             //Adding token to request
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", firebaseAuthLink.FirebaseToken);
+            if (firebaseAuthLink != null)
+            {
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", firebaseAuthLink.FirebaseToken); 
+            }
 
             return await base.SendAsync(request, cancellationToken);
         }

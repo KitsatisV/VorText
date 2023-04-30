@@ -52,7 +52,7 @@ namespace VorText
 
                     service.AddSingleton<NavigationService<RegisterViewModel>>((services) => new NavigationService<RegisterViewModel>(services.GetRequiredService<NavigationStore>(), () => new RegisterViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
                     service.AddSingleton<NavigationService<LoginViewModel>>((services) => new NavigationService<LoginViewModel>(services.GetRequiredService<NavigationStore>(), () => new LoginViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<NavigationService<RegisterViewModel>>(), services.GetRequiredService<NavigationService<HomeViewModel>>())));
-                    service.AddSingleton<NavigationService<HomeViewModel>>((services) => new NavigationService<HomeViewModel>(services.GetRequiredService<NavigationStore>(), () => HomeViewModel.LoadViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<IGetSecretMessageQuery>())));
+                    service.AddSingleton<NavigationService<HomeViewModel>>((services) => new NavigationService<HomeViewModel>(services.GetRequiredService<NavigationStore>(), () => HomeViewModel.LoadViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<IGetSecretMessageQuery>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
 
                     //Main window
                     service.AddSingleton<MainViewModel>();
