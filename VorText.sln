@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VorText.WPF", "VorText\VorText.WPF.csproj", "{96E78798-D5F8-48FF-9C1D-9EEC2307701B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VorText", "VorText\VorText.csproj", "{96E78798-D5F8-48FF-9C1D-9EEC2307701B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VorTextConvos.API", "VorTextConvos.API\VorTextConvos.API.csproj", "{431AF625-C37F-4A2A-A72C-840A518F46E2}"
 EndProject
