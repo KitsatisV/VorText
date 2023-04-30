@@ -14,5 +14,10 @@
         <Style TargetType="Button">
             <Setter Property="Padding" Value="10 5" />
         </Style>
+
+        <Style x:Key="ButtonTransparent" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
     </Application.Resources>
 </Application>

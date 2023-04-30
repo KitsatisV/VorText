@@ -1,4 +1,7 @@
-﻿using MVVMEssentials.ViewModels;
+﻿using Firebase.Auth;
+using MVVMEssentials.Commands;
+using MVVMEssentials.Services;
+using MVVMEssentials.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,9 +71,10 @@ namespace VorText.ViewModels
         public ICommand SubmitCommand { get; }
         public ICommand NavigateLoginCommand { get; }
 
-        public RegisterViewModel(Firebase.Auth.FirebaseAuthProvider firebaseAuthProvider)
+        public RegisterViewModel(FirebaseAuthProvider firebaseAuthProvider, INavigationService loginNavigationService)
         {
-            SubmitCommand = new RegisterCommand(this, firebaseAuthProvider);
+            SubmitCommand = new RegisterCommand(this, firebaseAuthProvider, loginNavigationService);
+            NavigateLoginCommand = new NavigateCommand(loginNavigationService);
         }
     }
 }

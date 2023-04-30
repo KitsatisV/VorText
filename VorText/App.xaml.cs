@@ -27,16 +27,21 @@ namespace VorText
         {
             _host = Host
                 .CreateDefaultBuilder()
+                //Services
                 .ConfigureServices((context, service) =>
                 {
+                    //Firebase
                     string firebaseApiKey = context.Configuration.GetValue<string>("FIREBASE_API_KEY");
                     service.AddSingleton(new FirebaseAuthProvider(new FirebaseConfig(firebaseApiKey)));
 
+                    //Navigation
                     service.AddSingleton<NavigationStore>();
                     service.AddSingleton<ModalNavigationStore>();
 
-                    service.AddSingleton<NavigationService<RegisterViewModel>>((services) => new NavigationService<RegisterViewModel>(services.GetRequiredService<NavigationStore>(), () => new RegisterViewModel(services.GetRequiredService<FirebaseAuthProvider>())));
+                    service.AddSingleton<NavigationService<RegisterViewModel>>((services) => new NavigationService<RegisterViewModel>(services.GetRequiredService<NavigationStore>(), () => new RegisterViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
+                    service.AddSingleton<NavigationService<LoginViewModel>>((services) => new NavigationService<LoginViewModel>(services.GetRequiredService<NavigationStore>(), () => new LoginViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<RegisterViewModel>>())));
 
+                    //Main window
                     service.AddSingleton<MainViewModel>();
 
                     service.AddSingleton<MainWindow>((services) => new MainWindow()
@@ -48,7 +53,7 @@ namespace VorText
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            var navigationService = _host.Services.GetRequiredService<NavigationService<RegisterViewModel>>();
+            var navigationService = _host.Services.GetRequiredService<NavigationService<LoginViewModel>>();
             navigationService.Navigate();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();

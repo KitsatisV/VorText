@@ -1,5 +1,6 @@
 ﻿using Firebase.Auth;
 using MVVMEssentials.Commands;
+using MVVMEssentials.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,15 @@ namespace VorText.Commands
     {
         private readonly RegisterViewModel _registerViewModel;
         private readonly FirebaseAuthProvider _firebaseAuthProvider;
+        private readonly INavigationService _loginNavigationService;
 
-        public RegisterCommand(RegisterViewModel registerViewModel, FirebaseAuthProvider firebaseAuthProvider)
+        public RegisterCommand(RegisterViewModel registerViewModel, FirebaseAuthProvider firebaseAuthProvider, INavigationService loginNavigationService)
         {
             _registerViewModel = registerViewModel;
             _firebaseAuthProvider = firebaseAuthProvider;
+            _loginNavigationService = loginNavigationService;
         }
+
         protected override async Task ExecuteAsync(object parameter)
         {
             string password = _registerViewModel.Password;
@@ -35,6 +39,8 @@ namespace VorText.Commands
             {
                 await _firebaseAuthProvider.CreateUserWithEmailAndPasswordAsync(_registerViewModel.Email, password, _registerViewModel.Username);
                 MessageBox.Show("Successfully registered!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                _loginNavigationService.Navigate();
             }
             catch (Exception)
             {
