@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\OIG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="MVVMEssentials.WPF" Version="1.0.3" />
@@ -18,6 +22,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VorTextShared.Core\VorTextShared.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="Images\OIG.png" />
   </ItemGroup>
 
   <ItemGroup>
