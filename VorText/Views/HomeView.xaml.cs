@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VorText.Windows;
 
 namespace VorText.Views
 {
@@ -24,5 +25,11 @@ namespace VorText.Views
         {
             InitializeComponent();
         }
-    }
+
+		private void btnStart_Click(object sender, RoutedEventArgs e)
+		{
+			SnakeView snakeView = new SnakeView();
+			snakeView.Show();
+		}
+	}
 }

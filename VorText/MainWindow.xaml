@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:VorText.Views"
         xmlns:vms="clr-namespace:VorText.ViewModels"
         mc:Ignorable="d"
-        Title="VorText"
+        Title="VorText Password Manager"
         Height="450"
         Width="800"
         WindowStartupLocation="CenterScreen">

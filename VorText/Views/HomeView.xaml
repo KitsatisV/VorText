@@ -30,18 +30,7 @@
                 Style="{StaticResource ButtonTransparent}"
                 Command="{Binding LogoutCommand}"/>
         </Grid>
-
-        <TextBlock
-            Grid.Row="1"
-            Margin="20"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            TextAlignment="Center"
-            FontSize="48"
-            Text="{Binding SecretMessage}"/>
-
-        <DataGrid Grid.Row="2" >
-            
-        </DataGrid>
+        <Button x:Name="btnStart" Content="Start Game" HorizontalAlignment="Center" Margin="0,286,0,0" Grid.Row="1" VerticalAlignment="Top" Width="233" FontWeight="Bold" Background="#FF0DC701" Click="btnStart_Click"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,54,0,0" Grid.Row="1" TextWrapping="Wrap" Text="This is a Snake Game! This Snake Game is used for demonstration purposes, due to insufficient time to build a better, more complex game. Use the arrows, on your keyboard, to move. In order to beat the game, you have to eat 200 cherries. You can see the cherry counter on the window title. Be careful not to hit your Snakehead on your Snakebody! Press &quot;Start Game&quot; when you're ready to play!" VerticalAlignment="Top" Width="400" Height="133" Background="#FFE4D45A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </UserControl>

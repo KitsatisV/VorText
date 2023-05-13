@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +16,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
 using VorText.Http;
-using VorText.Queries;
 using VorText.Stores;
 using VorText.ViewModels;
 
@@ -41,10 +41,6 @@ namespace VorText
                     //Refit
                     service.AddTransient<FirebaseAuthHttpMessageHandler>();
 
-                    service.AddRefitClient<IGetSecretMessageQuery>()
-                        .ConfigureHttpClient(c => c.BaseAddress = new Uri(context.Configuration.GetValue<string>("VORTEXT_CONVOS_API_BASE_URL")))
-                        .AddHttpMessageHandler<FirebaseAuthHttpMessageHandler>();
-
                     //Navigation
                     service.AddSingleton<NavigationStore>();
                     service.AddSingleton<ModalNavigationStore>();
@@ -52,7 +48,7 @@ namespace VorText
 
                     service.AddSingleton<NavigationService<RegisterViewModel>>((services) => new NavigationService<RegisterViewModel>(services.GetRequiredService<NavigationStore>(), () => new RegisterViewModel(services.GetRequiredService<FirebaseAuthProvider>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
                     service.AddSingleton<NavigationService<LoginViewModel>>((services) => new NavigationService<LoginViewModel>(services.GetRequiredService<NavigationStore>(), () => new LoginViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<NavigationService<RegisterViewModel>>(), services.GetRequiredService<NavigationService<HomeViewModel>>())));
-                    service.AddSingleton<NavigationService<HomeViewModel>>((services) => new NavigationService<HomeViewModel>(services.GetRequiredService<NavigationStore>(), () => HomeViewModel.LoadViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<IGetSecretMessageQuery>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
+                    service.AddSingleton<NavigationService<HomeViewModel>>((services) => new NavigationService<HomeViewModel>(services.GetRequiredService<NavigationStore>(), () => HomeViewModel.LoadViewModel(services.GetRequiredService<AuthenticationStore>(), services.GetRequiredService<NavigationService<LoginViewModel>>())));
 
                     //Main window
                     service.AddSingleton<MainViewModel>();

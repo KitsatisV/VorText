@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using VorText.Stores;
 using VorText.ViewModels;
+using VorText.Windows;
 
 namespace VorText.Commands
 {
