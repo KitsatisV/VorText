@@ -5,10 +5,15 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\492snake_100855.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Images\OIG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\492snake_100855.ico" />
   </ItemGroup>
 
   <ItemGroup>

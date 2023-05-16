@@ -13,8 +13,8 @@ namespace VorText.Models
 		public const double GameBoardWidthScale = 100;
 		public const double GameBoardHeightScale = 100;
 		public const int StartLevel = 1;
-		public const int EndLevel = 200;
-		public const int DefaultGameStepMilliSeconds = 250;
+		public const int EndLevel = 100;
+		public const int DefaultGameStepMilliSeconds = 150;
 		public const int DecreaseGameStepMilliSeconds = 1;
 		public const int RestartStepMilliSeconds = 1000;
 		public const int RestartCountdownStartSeconds = 5;

@@ -9,7 +9,8 @@
         Height="500" 
         Width="500" 
         MinHeight="250"
-        MinWidth="250">
+        MinWidth="250"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibility"></BooleanToVisibilityConverter>
@@ -21,7 +22,7 @@
         <KeyBinding Key="Left" Command="{Binding LeftKeyPressedCommand}"></KeyBinding>
     </Window.InputBindings>
     <Viewbox Stretch="Fill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Canvas Background="WhiteSmoke" Name="GameBoard" Width="{Binding SnakeGameLogic.GameBoardWidthPixels, Mode=TwoWay}" Height="{Binding SnakeGameLogic.GameBoardHeightPixels, Mode=TwoWay}">
+        <Canvas Background="Black" Name="GameBoard" Width="{Binding SnakeGameLogic.GameBoardWidthPixels, Mode=TwoWay}" Height="{Binding SnakeGameLogic.GameBoardHeightPixels, Mode=TwoWay}">
             <Ellipse Width="{Binding SnakeGameLogic.TheCherry.WidthPixels, Mode=OneWay}" 
                      Height="{Binding SnakeGameLogic.TheCherry.HeightPixels, Mode=OneWay}" 
                      Fill="Red">
@@ -35,7 +36,7 @@
             </Ellipse>
             <Rectangle Width="{Binding SnakeGameLogic.TheSnake.TheSnakeHead.WidthPixels, Mode=OneWay}" 
                        Height="{Binding SnakeGameLogic.TheSnake.TheSnakeHead.HeightPixels, Mode=OneWay}" 
-                       Fill="Blue">
+                       Fill="LawnGreen">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
                         <TranslateTransform X="{Binding SnakeGameLogic.TheSnake.TheSnakeHead.XPositionPixelsScreen, Mode=OneWay}" 
@@ -50,7 +51,7 @@
             </Rectangle>
             <Ellipse Width="{Binding SnakeGameLogic.TheSnake.TheSnakeEye.WidthPixels, Mode=OneWay}"
                      Height="{Binding SnakeGameLogic.TheSnake.TheSnakeEye.HeightPixels, Mode=OneWay}" 
-                     Fill="Yellow">
+                     Fill="Black">
                 <Ellipse.RenderTransform>
                     <TransformGroup>
                         <TranslateTransform X="{Binding SnakeGameLogic.TheSnake.TheSnakeEye.XPositionPixelsScreen, Mode=OneWay}" 
@@ -71,7 +72,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Rectangle Width="{Binding WidthPixels}" Height="{Binding HeightPixels}" Fill="Blue">
+                        <Rectangle Width="{Binding WidthPixels}" Height="{Binding HeightPixels}" Fill="LawnGreen">
                             <Rectangle.RenderTransform>
                                 <TransformGroup>
                                     <TranslateTransform X="{Binding XPositionPixelsScreen, Mode=OneWay}" 
@@ -92,10 +93,10 @@
                   Visibility="{Binding SnakeGameLogic.IsGameOver, Converter={StaticResource BooleanToVisibility}}">
                 <Viewbox Stretch="Fill" Margin="50,100,50,100">
                     <TextBlock TextAlignment="Center">
-                        <Run Text="GAME OVER"></Run>
+                        <Run Text="GAME OVER" Foreground="WhiteSmoke"></Run>
                         <LineBreak></LineBreak>
-                        <Run Text="RESTARTING IN "></Run>
-                        <Run Text="{Binding SnakeGameLogic.RestartCountdownSeconds, Mode=OneWay}"></Run>
+                        <Run Text="RESTARTING IN " Foreground="WhiteSmoke"></Run>
+                        <Run Text="{Binding SnakeGameLogic.RestartCountdownSeconds, Mode=OneWay}" Foreground="WhiteSmoke"></Run>
                     </TextBlock>
                 </Viewbox>
             </Grid>
